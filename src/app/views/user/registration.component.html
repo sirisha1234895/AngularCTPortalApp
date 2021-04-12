@@ -1,0 +1,275 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">  
+          <div class="card mx-4">
+            <div class="card-body p-4">
+              <form (ngSubmit)="registerUser(registrationForm)" #registrationForm="ngForm">
+                <h1>Register User</h1>
+                <p class="text-muted">Create your account</p>
+
+                <div class="input-group mb-3">
+                  <label for="title">Title</label>
+
+                  &nbsp;&nbsp;
+                  <label class="radio-inline">
+                    <input
+                      type="radio"
+                      name="title"
+                      [(ngModel)]="user.title"
+                      value="Mr."
+                      checked
+                    />
+                    Mr.
+                  </label>
+                  &nbsp;
+                  <label class="radio-inline">
+                    <input
+                      type="radio"
+                      name="title"
+                      [(ngModel)]="user.title"
+                      value="Ms."
+                      checked
+                    />
+                    Ms.
+                  </label>
+                  &nbsp;
+                  <label class="radio-inline">
+                    <input
+                      type="radio"
+                      name="title"
+                      [(ngModel)]="user.title"
+                      value="Mrs."
+                      checked
+                    />
+                    Mrs.
+                  </label>
+                  &nbsp;
+                  <label class="radio-inline">
+                    <input
+                      type="radio"
+                      name="title"
+                      [(ngModel)]="user.title"
+                      value="Dr."
+                      checked
+                    />
+                    Dr.
+                  </label>
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="icon-user"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="First Name"
+                    [(ngModel)]="user.firstName"
+                    name="firstName"
+                    [class.is-invalid]="firstName.touched && firstName.invalid"
+                    autofocuss
+                    #firstName="ngModel"
+                    autocomplete="firstName"
+                    minlength="3"
+                    maxlength="50"
+                    required
+                  />
+                </div>
+                <div
+                  *ngIf="
+                    firstName.invalid && (firstName.dirty || firstName.touched)
+                  "
+                  class="text-danger"
+                >
+                  <p *ngIf="firstName.errors.required">
+                    First Name is required.
+                  </p>
+                  <p *ngIf="firstName.errors.minlength">
+                    First Name must be at least 3 characters long.
+                  </p>
+                  <p *ngIf="firstName.errors.maxlength">
+                    First Name must be at least 50 characters long.
+                  </p>
+                </div>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="icon-user"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Last Name"
+                    [(ngModel)]="user.lastName"
+                    name="lastName"
+                    [class.is-invalid]="lastName.touched && lastName.invalid"
+                    autofocuss
+                    #lastName="ngModel"
+                    autocomplete="lastName"
+                    minlength="3"
+                    maxlength="50"
+                    required
+                  />
+                </div>
+                <div
+                  *ngIf="
+                    lastName.invalid && (lastName.dirty || lastName.touched)
+                  "
+                  class="text-danger"
+                >
+                  <p *ngIf="lastName.errors.required">
+                    Last Name is required.
+                  </p>
+                  <p *ngIf="lastName.errors.minlength">
+                    Last Name must be at least 3 characters long.
+                  </p>
+                  <p *ngIf="lastName.errors.maxlength">
+                    Last Name must be at least 50 characters long.
+                  </p>
+                </div>
+<div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">@</span>
+                  </div>
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Email-Id"
+                    [(ngModel)]="user.email"
+                    name="email"
+                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                    [class.is-invalid]="email.touched && email.invalid"
+                    autofocuss
+                    #email="ngModel"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+                <div
+                  *ngIf="
+                    email.invalid && (email.dirty || email.touched)
+                  "
+                  class="text-danger"
+                >
+                  <p *ngIf="email.errors.required">
+                    Email is required.
+                  </p>
+                  <p *ngIf="email.errors.pattern">
+                    Enter valid email id
+                  </p>
+                  
+                </div>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="fa fa-calendar"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="date"
+                    class="form-control"
+                    placeholder="Date of Birth"
+                    [(ngModel)]="user.dob"
+                    name="dob"
+                    [class.is-invalid]="dob.touched && dob.invalid"
+                    autofocuss
+                    #dob="ngModel"
+                    autocomplete="dob"
+                    required
+                  />
+                </div>
+                <div
+                  *ngIf="
+                    dob.invalid && (dob.dirty || dob.touched)
+                  "
+                  class="text-danger"
+                >
+                  <p *ngIf="dob.errors.required">
+                    DOB is required.
+                  </p>
+                  
+                  
+                </div>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="icon-lock"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Password"
+                    [(ngModel)]="user.password"
+                    name="password"
+                    [class.is-invalid]="password.touched && dob.invalid"
+                    autofocuss 
+                    #password="ngModel"
+                    autocomplete="password"
+                    required
+                  />
+                </div>
+                <div
+                  *ngIf="
+                    password.invalid && (password.dirty || password.touched)
+                  "
+                  class="text-danger"
+                >
+                  <p *ngIf="password.errors.required">
+                    Password is required.
+                  </p>
+                  <!-- <p *ngIf="password.errors.pattern">
+                    Password must contain
+                  </p> -->
+                  
+                </div>
+
+                <div class="input-group mb-3">
+                  <label class="col-form-label" for="role">Select Role</label>
+
+                  <select
+                    class="form-control"
+                    [(ngModel)]="user.role"
+                    name="role"
+                    [class.is-invalid]="role.touched && role.invalid"
+                    autofocuss
+                    #role="ngModel"
+                    autocomplete="role"
+                    required
+                  >
+                    <option value="0" disabled>Select Role</option>
+                    <option value="Physician">Physician</option>
+                    <option value="Nurse">Nurse</option>
+                  </select>
+                </div>
+                <div
+                  *ngIf="
+                    role.invalid && (role.dirty || role.touched)
+                  "
+                  class="text-danger"
+                >
+                  <p *ngIf="role.errors.required">
+                    Role is required.
+                  </p>
+                  
+                  
+                </div>
+
+                <button type="submit" class="btn btn-block btn-success" [disabled]="registrationForm.invalid">
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
